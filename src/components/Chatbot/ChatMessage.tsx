@@ -10,12 +10,18 @@ export default function ChatMessage(props: PassedProps) {
   const { chatMessage } = props;
   return (
     <div id={`${chatMessage.key}-${chatMessage.sender}`}>
-      {chatMessage.message}
-      <img
-        src={chatMessage.sender === "user" ? userImg : robotImg}
-        alt={chatMessage.sender}
-        width={50}
-      />
+      {chatMessage.sender === "user" && (
+        <>
+          {chatMessage.message}
+          <img src={userImg} alt={chatMessage.sender} width={50} />
+        </>
+      )}
+      {chatMessage.sender === "robot" && (
+        <>
+          <img src={robotImg} alt={chatMessage.sender} width={50} />
+          {chatMessage.message}
+        </>
+      )}
     </div>
   );
 }

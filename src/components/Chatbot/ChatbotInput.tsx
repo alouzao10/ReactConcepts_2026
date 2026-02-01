@@ -10,11 +10,19 @@ function ChatbotInput(props: PassedProps) {
   const enterInput = (key: string) => {
     if (key === "Enter" && chatText) {
       props.sendChat(chatText);
+      setChatText("");
     }
   };
+
+  const clickSend = () => {
+    if (chatText) {
+      props.sendChat(chatText);
+      setChatText("");
+    }
+  };
+
   return (
     <div>
-      <h1>Let's Chat!</h1>
       <input
         type="text"
         value={chatText}
@@ -25,9 +33,9 @@ function ChatbotInput(props: PassedProps) {
         onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
           enterInput(e.key)
         }
-        size={40}
+        size={50}
       />
-      <button onClick={() => props.sendChat(chatText)}>Send</button>
+      <button onClick={clickSend}>Send</button>
     </div>
   );
 }

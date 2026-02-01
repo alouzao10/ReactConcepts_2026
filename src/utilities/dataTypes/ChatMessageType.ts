@@ -1,5 +1,5 @@
 export interface ChatMessageType {
   message: string;
-  key: number;
+  key: string;
   sender: "user" | "robot";
 }
